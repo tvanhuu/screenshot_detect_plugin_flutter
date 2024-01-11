@@ -9,7 +9,7 @@ import Photos
 import UIKit
 import Flutter
 
-@available(iOS 13.0, *)
+@available(iOS 14.0, *)
 class ScreenshotDetector: NSObject, ObservableObject, PHPhotoLibraryChangeObserver {
     private var TAG: String = "ScreenshotDetectPluginFlutterPlugin"
     private var fetchResult: PHFetchResult<PHAsset>?
@@ -28,17 +28,14 @@ class ScreenshotDetector: NSObject, ObservableObject, PHPhotoLibraryChangeObserv
         
     func startDetectingScreenshots() {
         print(TAG + " startDetectingScreenshots")
-        
-        PHPhotoLibrary.requestAuthorization{status in
-            if status == .authorized {
-                print(self.TAG + " status == .authorized")
-
-                PHPhotoLibrary.shared().register(self)
-                let fetchOptions = PHFetchOptions()
-                fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-                fetchOptions.predicate = NSPredicate(format: "mediaType = %d", PHAssetMediaType.image.rawValue)
-                self.fetchResult = PHAsset.fetchAssets(with: fetchOptions)
-            }
+        if checkPhotoLibraryPermission() {
+            PHPhotoLibrary.shared().register(self)
+            let fetchOptions = PHFetchOptions()
+            fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+            fetchOptions.predicate = NSPredicate(format: "mediaType = %d", PHAssetMediaType.image.rawValue)
+            self.fetchResult = PHAsset.fetchAssets(with: fetchOptions)
+        } else {
+            // TODO: If not authorization
         }
     }
     
@@ -114,6 +111,36 @@ class ScreenshotDetector: NSObject, ObservableObject, PHPhotoLibraryChangeObserv
             print(error)
             print("file cant not be save at path \(filepath), with error : \(error)");
             return urlImage.absoluteString
+        }
+    }
+    
+    func checkPhotoLibraryPermission() -> Bool {
+        return PHPhotoLibrary.authorizationStatus() == .authorized
+//            let status = PHPhotoLibrary.authorizationStatus()
+//            print(TAG + " checkPhotoLibraryPermission \(status)")
+//            switch status {
+//                case .authorized:
+//                    return true
+//                case .denied, .restricted, .notDetermined, .limited :
+//                    return false
+//                default:
+//                    return false
+//            }
+    }
+    
+    func requestPermission() {
+        // ask for permissions
+        PHPhotoLibrary.requestAuthorization { status in
+            switch status {
+                case .authorized: break
+                // as above
+                case .denied, .restricted: break
+                // as above
+                case .notDetermined: break
+                // won't happen but still
+                case .limited: break
+                default: break
+            }
         }
     }
 }

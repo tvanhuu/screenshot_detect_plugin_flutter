@@ -1,7 +1,11 @@
+//
+//  Created by Hữu Trần on 10/01/2024.
+//
+
 import Flutter
 import UIKit
 
-@available(iOS 13.0, *)
+@available(iOS 14.0, *)
 public class ScreenshotDetectPluginFlutterPlugin: NSObject, FlutterPlugin, FlutterStreamHandler {
     private var TAG: String = "ScreenshotDetectPluginFlutterPlugin"
     private var eventChanel = "screenshot_detect_plugin_flutter/event"
@@ -37,15 +41,16 @@ public class ScreenshotDetectPluginFlutterPlugin: NSObject, FlutterPlugin, Flutt
     
     private func methodCallHandler(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         switch call.method {
-          case "getPlatformVersion":
+            case "getPlatformVersion":
                 result("iOS " + UIDevice.current.systemVersion)
-          case "checkPermission":
+            case "checkPermission":
+                result(screenshotDetector.checkPhotoLibraryPermission())
+            case "requestPermission":
+                screenshotDetector.requestPermission()
                 result("Okay, coming soon..")
-        case "requestPermission":
-              result("Okay, coming soon..")
-          default:
+            default:
                 result(nil)
-      }
+        }
     }
     
     public func onListen(withArguments arguments: Any?,eventSink: @escaping FlutterEventSink) -> FlutterError? {

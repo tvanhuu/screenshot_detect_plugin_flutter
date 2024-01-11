@@ -12,6 +12,7 @@ Hope to help you.
 
 Android
 
+- Required minSdkVersion > 26, targetSdk 33
 - Add to AndroidManifest
 
 ```xml
@@ -33,14 +34,15 @@ Android
 
 IOS
 
-- Add NSPhotoLibraryUsageDescription to Info.plit
+- Required IOS > 14
+- Add NSPhotoLibraryUsageDescription to Info.plits
 
 ```plist
     <key>NSPhotoLibraryUsageDescription</key>
     <string>This app requires access to the photo library.</string>
 ```
 
-You can to check and request permission `checkPermission` work to android, ios coming soon bro.
+You can to check and request permission `checkPermission`.
 
 ```dart
     Future<void> _checkPermission() async {
@@ -98,6 +100,39 @@ class _MyAppState extends State<MyApp> {
     }).onError((error) {
       print("It is somethings wrong: \n $error");
     });
+  }
+
+   @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Screenshot example app'),
+        ),
+        body: SizedBox(
+          width: double.infinity,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text('Running on: $_platformVersion\n'),
+              StreamBuilder<String?>(
+                stream: _stream,
+                builder: (_, AsyncSnapshot<String?> snapshoot) {
+                  if (snapshoot.data == null) {
+                    return const Text('Let\'s take screenShot now!');
+                  }
+                  return SizedBox(
+                      width: 200,
+                      height: 200,
+                      child: Image.file(File(snapshoot.data!)));
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
 ...

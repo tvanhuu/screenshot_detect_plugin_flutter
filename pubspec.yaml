@@ -1,6 +1,6 @@
 name: screenshot_detect_plugin_flutter
 description: A simple package to detect user screenshots and get path images.
-version: 0.0.2
+version: 0.0.5
 homepage: https://github.com/tvanhuu/screenshot_detect_plugin_flutter
 
 environment:
