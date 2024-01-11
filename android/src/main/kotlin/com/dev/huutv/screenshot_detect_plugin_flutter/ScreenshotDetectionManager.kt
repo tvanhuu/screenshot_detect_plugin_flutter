@@ -75,10 +75,9 @@ class ScreenshotDetectionManager(private val listener: ScreenshotDetectionListen
         when (requestCode) {
             REQUEST_CODE_READ_EXTERNAL_STORAGE_PERMISSION -> if (grantResults[0] == PackageManager.PERMISSION_DENIED) {
                 showReadExternalStoragePermissionDeniedMessage()
+                return false
             }
-            else -> return false
         }
-
         return true
     }
 
