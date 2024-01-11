@@ -137,3 +137,11 @@ class _MyAppState extends State<MyApp> {
 
 ...
 ```
+
+## Author
+
+- [tvanhuu](https://github.com/tvanhuu) • <ithuutran@gmail.com>
+
+## License
+
+MIT

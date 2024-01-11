@@ -27,7 +27,6 @@ class ScreenshotDetector: NSObject, ObservableObject, PHPhotoLibraryChangeObserv
     }
         
     func startDetectingScreenshots() {
-        print(TAG + " startDetectingScreenshots")
         if checkPhotoLibraryPermission() {
             PHPhotoLibrary.shared().register(self)
             let fetchOptions = PHFetchOptions()
@@ -44,8 +43,6 @@ class ScreenshotDetector: NSObject, ObservableObject, PHPhotoLibraryChangeObserv
     }
         
     func photoLibraryDidChange(_ changeInstance: PHChange) {
-        print(self.TAG + " photoLibraryDidChange")
-        
         guard let fetchResult = fetchResult,
               let changes = changeInstance.changeDetails(for: fetchResult) else {
             return
@@ -116,23 +113,15 @@ class ScreenshotDetector: NSObject, ObservableObject, PHPhotoLibraryChangeObserv
     
     func checkPhotoLibraryPermission() -> Bool {
         return PHPhotoLibrary.authorizationStatus() == .authorized
-//            let status = PHPhotoLibrary.authorizationStatus()
-//            print(TAG + " checkPhotoLibraryPermission \(status)")
-//            switch status {
-//                case .authorized:
-//                    return true
-//                case .denied, .restricted, .notDetermined, .limited :
-//                    return false
-//                default:
-//                    return false
-//            }
     }
     
     func requestPermission() {
         // ask for permissions
         PHPhotoLibrary.requestAuthorization { status in
             switch status {
-                case .authorized: break
+                case .authorized: 
+                    self.startDetectingScreenshots()
+                    break
                 // as above
                 case .denied, .restricted: break
                 // as above

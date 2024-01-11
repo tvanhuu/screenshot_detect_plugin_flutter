@@ -54,7 +54,6 @@ public class ScreenshotDetectPluginFlutterPlugin: NSObject, FlutterPlugin, Flutt
     }
     
     public func onListen(withArguments arguments: Any?,eventSink: @escaping FlutterEventSink) -> FlutterError? {
-        print(TAG + " onListen")
         self.eventSink = eventSink
         self.screenshotDetector.setSink(eventSink: eventSink)
         self.screenshotDetector.startDetectingScreenshots()
@@ -62,18 +61,15 @@ public class ScreenshotDetectPluginFlutterPlugin: NSObject, FlutterPlugin, Flutt
     }
 
     public func onCancel(withArguments arguments: Any?) -> FlutterError? {
-        print(TAG + " onCancel")
         eventSink = nil
         return nil
     }
 
     @objc func didEnterBackground() {
-        print(TAG + " didEnterBackground")
         self.screenshotDetector.stopDetectingScreenshots()
     }
 
     @objc func willEnterForeground() {
-        print(TAG + " willEnterForeground")
         self.screenshotDetector.startDetectingScreenshots()
     }
 }
