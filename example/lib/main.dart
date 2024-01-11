@@ -90,10 +90,15 @@ class _MyAppState extends State<MyApp> {
                   if (snapshoot.data == null) {
                     return const Text('Let\'s take screenShot now!');
                   }
-                  return SizedBox(
-                      width: 200,
-                      height: 200,
-                      child: Image.file(File(snapshoot.data!)));
+                  return Column(
+                    children: [
+                      Text('${snapshoot.data}'),
+                      SizedBox(
+                          width: 200,
+                          height: 200,
+                          child: Image.file(File(snapshoot.data!))),
+                    ],
+                  );
                 },
               ),
             ],
