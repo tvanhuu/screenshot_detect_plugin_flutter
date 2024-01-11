@@ -17,12 +17,12 @@ class MockScreenshotDetectPluginFlutterPlatform
 
   @override
   Future<bool?> checkPermission() {
-    throw UnimplementedError();
+    return Future.value(true);
   }
 
   @override
   Future<String?> requestPermission() {
-    throw UnimplementedError();
+    return Future.value('Request success');
   }
 }
 
@@ -53,5 +53,23 @@ void main() {
     ScreenshotDetectPluginFlutterPlatform.instance = fakePlatform;
 
     expect(screenshotDetect.screenShotStream(), const Stream<String>.empty());
+  });
+
+  test('checkPermission', () async {
+    ScreenshotDetect screenshotDetect = ScreenshotDetect();
+    MockScreenshotDetectPluginFlutterPlatform fakePlatform =
+        MockScreenshotDetectPluginFlutterPlatform();
+    ScreenshotDetectPluginFlutterPlatform.instance = fakePlatform;
+
+    expect(await screenshotDetect.checkPermission(), true);
+  });
+
+  test('getPlatformVersion', () async {
+    ScreenshotDetect screenshotDetect = ScreenshotDetect();
+    MockScreenshotDetectPluginFlutterPlatform fakePlatform =
+        MockScreenshotDetectPluginFlutterPlatform();
+    ScreenshotDetectPluginFlutterPlatform.instance = fakePlatform;
+
+    expect(await screenshotDetect.getPlatformVersion(), 'Request success');
   });
 }

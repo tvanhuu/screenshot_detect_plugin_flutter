@@ -27,4 +27,12 @@ void main() {
   test("getStreamScreenshot", () {
     expect(platform.screenShotStream(), const Stream.empty());
   });
+
+  test("checkPermission", () {
+    expect(platform.checkPermission(), true);
+  });
+
+  test("getPlatformVersion", () {
+    expect(platform.getPlatformVersion(), 'Request success');
+  });
 }
