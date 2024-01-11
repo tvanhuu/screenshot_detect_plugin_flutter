@@ -1,17 +1,15 @@
 # screenshot_detect_plugin_flutter
 
-A simple package to detect user screenshots and get path images.
+A simple package to detect user screenshots and get path images for android and ios.
 You can from image link to social sharing.
 Hope to help you.
 
 [Source](https://github.com/tvanhuu/screenshot_detect_plugin_flutter)
 [pubdev](https://pub.dev/packages/screenshot_detect_plugin_flutter)
 
-
 ![2024-01-11 13 54 14](https://github.com/tvanhuu/screenshot_detect_plugin_flutter/assets/31562266/340b84a6-2b08-4969-81bb-ddeeccd3c8a1)
 
 ---
-
 
 ## Getting Started
 
