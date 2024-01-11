@@ -40,7 +40,7 @@ IOS
     <string>This app requires access to the photo library.</string>
 ```
 
-You can to check and request permission
+You can to check and request permission `checkPermission` work to android, ios coming soon bro.
 
 ```dart
     Future<void> _checkPermission() async {
@@ -54,7 +54,7 @@ You can to check and request permission
 
 ---
 
-Create Instance of `Screenshot stream` and listen call back
+Create Stream of `Screenshot stream` and listen call back
 
 ```dart
     Future<void> _listenScreenShot() async {
