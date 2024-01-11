@@ -5,6 +5,7 @@ You can from image link to social sharing.
 Hope to help you.
 
 [Source](https://github.com/tvanhuu/screenshot_detect_plugin_flutter)
+[pubdev](https://pub.dev/packages/screenshot_detect_plugin_flutter)
 
 ---
 
