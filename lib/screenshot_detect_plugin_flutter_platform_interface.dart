@@ -34,12 +34,12 @@ abstract class ScreenshotDetectPluginFlutterPlatform extends PlatformInterface {
     throw UnimplementedError('screenShotStream() has not been implemented.');
   }
 
-  /// Check permission READ_EXTERNAL_STORAGE  using the `ScreenshotDetectPluginFlutterPlatform`.
+  /// Check permission READ_EXTERNAL_STORAGE, NSPhotoLibrary using the `ScreenshotDetectPluginFlutterPlatform`.
   Future<bool?> checkPermission() {
     throw UnimplementedError('checkPermission() has not been implemented.');
   }
 
-  /// Request permission READ_EXTERNAL_STORAGE  using the `ScreenshotDetectPluginFlutterPlatform`.
+  /// Request permission READ_EXTERNAL_STORAGE, NSPhotoLibrary using the `ScreenshotDetectPluginFlutterPlatform`.
   Future<String?> requestPermission() {
     throw UnimplementedError('requestPermission() has not been implemented.');
   }

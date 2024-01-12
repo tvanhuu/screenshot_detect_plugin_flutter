@@ -31,7 +31,7 @@ class MethodChannelScreenshotDetectPluginFlutter
     });
   }
 
-  /// Check permission READ_EXTERNAL_STORAGE  using the `ScreenshotDetectPluginFlutterPlatform`.
+  /// Check permission READ_EXTERNAL_STORAGE, NSPhotoLibrary using the `ScreenshotDetectPluginFlutterPlatform`.
   @override
   Future<bool?> checkPermission() async {
     final permissionGranted =
@@ -39,7 +39,7 @@ class MethodChannelScreenshotDetectPluginFlutter
     return permissionGranted;
   }
 
-  /// Request permission READ_EXTERNAL_STORAGE  using the `ScreenshotDetectPluginFlutterPlatform`.
+  /// Request permission READ_EXTERNAL_STORAGE, NSPhotoLibrary using the `ScreenshotDetectPluginFlutterPlatform`.
   @override
   Future<String?> requestPermission() async {
     return await methodChannel.invokeMethod<String?>('requestPermission');

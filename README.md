@@ -1,7 +1,7 @@
 # screenshot_detect_plugin_flutter
 
 - A simple package to detect user screenshots and get path images for `Android` and `IOS`.
-- You can from image link to social sharing.
+- You can share image to social...
 - Hope to help you.
 
 [Source](https://github.com/tvanhuu/screenshot_detect_plugin_flutter)
@@ -13,7 +13,7 @@
 
 ## Getting Started
 
-ANDROID
+`ANDROID`
 
 - Required minSdkVersion >= 26, targetSdk 33
 - Add to AndroidManifest user permission
@@ -37,7 +37,7 @@ ANDROID
 
 ---
 
-IOS
+`IOS`
 
 - Required IOS > 14
 - Add NSPhotoLibraryUsageDescription to Info.plits
@@ -47,6 +47,9 @@ IOS
     <string>This app requires access to the photo library.</string>
 ```
 
+---
+
+`USE`
 You can to check and request permission `checkPermission`.
 
 ```dart
@@ -61,7 +64,7 @@ You can to check and request permission `checkPermission`.
 
 ---
 
-Create Stream of `Screenshot stream` and listen call back
+Create Stream of `Screenshot stream` and listen call back path
 
 ```dart
     Future<void> _listenScreenShot() async {
@@ -75,7 +78,7 @@ Create Stream of `Screenshot stream` and listen call back
   }
 ```
 
-Full example:
+`Full example`
 
 ```dart
 import 'package:screenshot_detect_plugin_flutter/screenshot_detect.dart';

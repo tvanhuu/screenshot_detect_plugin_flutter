@@ -13,12 +13,12 @@ class ScreenshotDetect {
     return ScreenshotDetectPluginFlutterPlatform.instance.screenShotStream();
   }
 
-  /// Check permission READ_EXTERNAL_STORAGE  using the `ScreenshotDetectPluginFlutterPlatform`.
+  /// Check permission READ_EXTERNAL_STORAGE, NSPhotoLibrary using the `ScreenshotDetectPluginFlutterPlatform`.
   Future<bool?> checkPermission() {
     return ScreenshotDetectPluginFlutterPlatform.instance.checkPermission();
   }
 
-  /// Request permission READ_EXTERNAL_STORAGE  using the `ScreenshotDetectPluginFlutterPlatform`.
+  /// Request permission READ_EXTERNAL_STORAGE, NSPhotoLibrary using the `ScreenshotDetectPluginFlutterPlatform`.
   Future<String?> requestPermission() {
     return ScreenshotDetectPluginFlutterPlatform.instance.requestPermission();
   }
